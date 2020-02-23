@@ -22,6 +22,8 @@ struct Item *item(char* name, char* description, struct Item *next){
     newItem->name = name;
     newItem->description = description;
     newItem->next = next;
+    
+    return newItem;
 }
   
 struct Item *next;
