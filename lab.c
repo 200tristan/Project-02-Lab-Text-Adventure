@@ -38,7 +38,9 @@ char* item_next(struct Item *item){
     return item->next;
 }
 
-
+struct Item* item_take(char* name, struct Item *item){
+    
+}
 
 struct Item* items = item("bronze key", "a dull bronze key", 
                           item("rope", "a leather-bound rope", NULL));
