@@ -39,11 +39,32 @@ char* item_next(struct Item *item){
 }
 
 struct Item* item_take(char* name, struct Item *item){
-    
+    while(item->next!=NULL){
+        if(strcmp(item->next->name, name) == 0){//implies two strings are equal
+            struct Item* remove = item->next;
+            struct Item* returnItem = item(remove->name, remove->description, NULL);
+            item->next = item->next->next;
+            free(remove);
+            return returnItem;
+        }
+        item = item->next;
+    }
+    return NULL;
 }
 
 struct Item* items = item("bronze key", "a dull bronze key", 
                           item("rope", "a leather-bound rope", NULL));
+
+struct Room{
+    char* description;
+    struct Item* items;
+    struct Room *north;
+    struct Room *south;
+    struct Room *east;
+    struct Room *west;
+    struct Room *up;
+    struct Room *down;
+}                          
 
 struct Room * room(char* description, struct Item* items,
                    struct Room *north, struct Room *south,
