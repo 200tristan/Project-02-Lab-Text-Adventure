@@ -4,7 +4,11 @@
 #include <stdio.h>
 #include <string.h>
 
-
+struct Item{
+    char *name;
+    char *description;
+    struct Item *next;
+}
 
 struct Item *item(char* name, char* description)
   
