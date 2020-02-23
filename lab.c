@@ -2,6 +2,7 @@
 // Jake Stulgis, Jenny Guo, Ashwin Randhir
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 struct Item{
@@ -10,7 +11,18 @@ struct Item{
     struct Item *next;
 }
 
-struct Item *item(char* name, char* description)
+struct Item *item(char* name, char* description, struct Item *next){
+    struct Item *newItem = NULL;
+    newItem = (struct Item *)malloc(sizeof(struct Item));
+    
+    if(newItem == NULL){
+        return NULL;
+    }
+    
+    newItem->name = name;
+    newItem->description = description;
+    newItem->next = next;
+}
   
 struct Item *next;
 
