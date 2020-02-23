@@ -26,7 +26,19 @@ struct Item *item(char* name, char* description, struct Item *next){
     return newItem;
 }
   
-struct Item *next;
+char* item_name(struct Item *item){
+    return item->name;
+}
+
+char* item_description(struct Item *item){
+    return item->description;
+}
+
+char* item_next(struct Item *item){
+    return item->next;
+}
+
+
 
 struct Item* items = item("bronze key", "a dull bronze key", 
                           item("rope", "a leather-bound rope", NULL));
