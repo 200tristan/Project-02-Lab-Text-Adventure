@@ -34,6 +34,8 @@ char* item_description(struct Item *item){
     return item->description;
 }
 
+
+
 char* item_next(struct Item *item){
     return item->next;
 }
@@ -69,6 +71,26 @@ struct Room{
 struct Room * room(char* description, struct Item* items,
                    struct Room *north, struct Room *south,
                    struct Room *east, struct Room *west,
-                   struct Room *up, struct Room *down);
+                   struct Room *up, struct Room *down){
+    struct Room *newRoom = NULL;
+    newRoom = (struct Room *)malloc(sizeof(struct Room));
+    
+    if(newRoom == NULL){
+        return NULL;
+    }
+    
+    newRoom->description = description;
+    newRoom->items = items;
+    newRoom->north = north;
+    newRoom->south = south;
+    newRoom->east = east;
+    newRoom->west = west;
+    newRoom->up = up;
+    newRoom->down = down;
+    
+    return newRoom;
+}
 
 void room_exit_north(struct Room* current, struct Room* other);
+
+
