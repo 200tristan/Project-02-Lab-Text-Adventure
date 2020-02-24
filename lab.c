@@ -34,8 +34,6 @@ char* item_description(struct Item *item){
     return item->description;
 }
 
-
-
 char* item_next(struct Item *item){
     return item->next;
 }
@@ -53,9 +51,6 @@ struct Item* item_take(char* name, struct Item *item){
     }
     return NULL;
 }
-
-struct Item* items = item("bronze key", "a dull bronze key", 
-                          item("rope", "a leather-bound rope", NULL));
 
 struct Room{
     char* description;
@@ -91,6 +86,20 @@ struct Room * room(char* description, struct Item* items,
     return newRoom;
 }
 
-void room_exit_north(struct Room* current, struct Room* other);
+void room_exit_north(struct Room* current, struct Room* other){
+    current->north = other;
+}
+
+int main(){
+    struct Item* item1 = item("bronze key", "a dull bronze key", 
+                          item("rope", "a leather-bound rope", NULL));
+    struct Item* item2 = item("old box", "a box with dust", 
+                          item("notebook", "a CS notebook", NULL));
+    struct Room *room1 = room("Seems like no one lives in this room for a long time", item1, NULL, NULL, NULL, NULL, NULL, NULL);
+    struct Room *room2 = room("Looks like scientist's room", item2, NULL, NULL, NULL, NULL, NULL, NULL);
+
+    room_exit_north(room1, room2);
+    
+}
 
 
