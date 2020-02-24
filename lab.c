@@ -34,20 +34,20 @@ char* item_description(struct Item *item){
     return item->description;
 }
 
-char* item_next(struct Item *item){
+struct Item* item_next(struct Item *item){
     return item->next;
 }
 
-struct Item* item_take(char* name, struct Item *item){
-    while(item->next!=NULL){
-        if(strcmp(item->next->name, name) == 0){//implies two strings are equal
-            struct Item* remove = item->next;
-            struct Item* returnItem = item(remove->name, remove->description, NULL);
-            item->next = item->next->next;
-            free(remove);
+struct Item* item_take(char* name, struct Item *items){
+    while(items->next!=NULL){
+        if(strcmp(items->next->name, name) == 0){//implies two strings are equal
+            struct Item* removeItem = items->next;
+            struct Item* returnItem = item(removeItem->name, removeItem->description, NULL);
+            items->next = items->next->next;
+            free(removeItem);
             return returnItem;
         }
-        item = item->next;
+        items = items->next;
     }
     return NULL;
 }
@@ -99,7 +99,7 @@ int main(){
     struct Room *room2 = room("Looks like scientist's room", item2, NULL, NULL, NULL, NULL, NULL, NULL);
 
     room_exit_north(room1, room2);
+    printf("%s\n", room1->items->next->name);
+    printf("%s\n",room1->north->items->next->description);
     
 }
-
-
