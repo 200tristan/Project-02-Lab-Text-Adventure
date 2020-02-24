@@ -9,7 +9,7 @@ struct Item{
     char *name;
     char *description;
     struct Item *next;
-}
+};
 
 struct Item *item(char* name, char* description, struct Item *next){
     struct Item *newItem = NULL;
@@ -66,7 +66,7 @@ struct Room{
     struct Room *west;
     struct Room *up;
     struct Room *down;
-}                          
+};                          
 
 struct Room * room(char* description, struct Item* items,
                    struct Room *north, struct Room *south,
